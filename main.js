@@ -82,11 +82,14 @@ define(function (require, exports, module) {
 
             $(colorPicker).iris('show');
 
-            var left = $('.CodeMirror-cursors > .CodeMirror-cursor').length ? $('.CodeMirror-cursors > .CodeMirror-cursor').offset().left : (
-             $('.CodeMirror > div:eq(0) > textarea').offset().left );
+            var cursorEl = $('.CodeMirror:visible > .CodeMirror-cursors > .CodeMirror-cursor');
+            var selEl = $('.CodeMirror:visible > div:eq(0) > textarea');
 
-            var top = $('.CodeMirror-cursors > .CodeMirror-cursor').length ? $('.CodeMirror-cursors > .CodeMirror-cursor').offset().top+$('.CodeMirror-cursors > .CodeMirror-cursor').outerHeight() : (
-             $('.CodeMirror > div:eq(0) > textarea').offset().top + $('.CodeMirror > div:eq(0) > textarea').outerHeight() );
+            var left = cursorEl.length ? cursorEl.offset().left : (
+             selEl.offset().left );
+
+            var top = cursorEl.length ? cursorEl.offset().top+cursorEl.outerHeight() : (
+             selEl.offset().top + selEl.outerHeight() );
 
             pickerContainer.css({
                 'left': left,
@@ -97,15 +100,15 @@ define(function (require, exports, module) {
             top = pickerContainer.offset().top;
 
             if ( left + pickerContainer.outerWidth() > $('body').outerWidth() ) {
-                left = ($('.CodeMirror-cursors > .CodeMirror-cursor').length ? $('.CodeMirror-cursors > .CodeMirror-cursor').offset().left : (
-             $('.CodeMirror > div:eq(0) > textarea').offset().left) ) - pickerContainer.outerWidth();
+                left = (cursorEl.length ? cursorEl.offset().left : (
+             selEl.offset().left) ) - pickerContainer.outerWidth();
             }
 
 
             if ( top + pickerContainer.outerHeight() > $('body').outerHeight() ) {
-                top = ($('.CodeMirror-cursors > .CodeMirror-cursor').length ? 
-                    $('.CodeMirror-cursors > .CodeMirror-cursor').offset().top : (
-             $('.CodeMirror > div:eq(0) > textarea').offset().top) ) - pickerContainer.outerHeight();
+                top = (cursorEl.length ? 
+                    cursorEl.offset().top : (
+             selEl.offset().top) ) - pickerContainer.outerHeight();
             }
 
             pickerContainer.css({
@@ -187,7 +190,7 @@ define(function (require, exports, module) {
     });
 
     // Register Command
-    var COMMAND_ID  = 'mikailcolak.bracketsColorPicker.toggle'
+    var COMMAND_ID  = 'mikailcolak.bracketsColorPicker.show'
     var menu        = Menus.getMenu( Menus.AppMenuBar.VIEW_MENU );
     CommandManager.register( 'Show ColorPicker', COMMAND_ID, function(){
         range = true;
