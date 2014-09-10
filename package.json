@@ -1,0 +1,12 @@
+{
+    "title": "Brackets Color Picker",
+    "name": "mikailcolak.brackets-color-picker",
+    "version": "0.1.0",
+    "description": "This extension activates color picker for brackets, when you type 'color:' in brackets color picker will be appeared in editor.",
+    "homepage": "https://github.com/mikailcolak/brackets-color-picker",
+    "keywords": ["color", "picker", "iris", "palette"],
+    "categories": ["visual"],
+    "engines": { "brackets": ">=0.36.0" },
+    "author": "Mikail ÇOLAK <mikailcolak@gmail.com> (https://github.com/mikailcolak)",
+    "license": "MIT"
+}
