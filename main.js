@@ -133,11 +133,10 @@ define(function (require, exports, module) {
 
     // Active Editor
     $(EditorManager).on("activeEditorChange", function(e, activeEditor, prevEditor){              
-        editor = activeEditor;
-
-        registerEvents(editor._codeMirror);
-
-        picker('hide');
+        if ( activeEditor && activeEditor._codeMirror ) {
+            registerEvents(activeEditor._codeMirror);
+            picker('hide');
+        }
     });
 
 
