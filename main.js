@@ -82,14 +82,22 @@ define(function (require, exports, module) {
 
             $(colorPicker).iris('show');
 
-            var cursorEl = $('.CodeMirror:visible > .CodeMirror-cursors > .CodeMirror-cursor');
-            var selEl = $('.CodeMirror:visible > div:eq(0) > textarea');
-
+            var cursorEl = null;
+            var selEl = null;
+            
+            if ( $('.active-pane').length ) {
+                cursorEl = $('.active-pane .CodeMirror:visible > .CodeMirror-cursors > .CodeMirror-cursor');
+                selEl = $('.active-pane  .CodeMirror:visible > div:eq(0) > textarea');
+            } else {
+                cursorEl = $('.CodeMirror:visible > .CodeMirror-cursors > .CodeMirror-cursor');
+                selEl = $('.CodeMirror:visible > div:eq(0) > textarea');
+            }rgba( 41, 91, 35, 0.508 )
+            
             var left = cursorEl.length ? cursorEl.offset().left : (
              selEl.offset().left );
 
             var top = cursorEl.length ? cursorEl.offset().top+cursorEl.outerHeight() : (
-             selEl.offset().top + selEl.outerHeight() );
+            selEl.offset().top + selEl.outerHeight() );
 
             pickerContainer.css({
                 'left': left,
