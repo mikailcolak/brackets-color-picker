@@ -91,7 +91,7 @@ define(function (require, exports, module) {
             } else {
                 cursorEl = $('.CodeMirror:visible > .CodeMirror-cursors > .CodeMirror-cursor');
                 selEl = $('.CodeMirror:visible > div:eq(0) > textarea');
-            }rgba( 41, 91, 35, 0.508 )
+            }
             
             var left = cursorEl.length ? cursorEl.offset().left : (
              selEl.offset().left );
